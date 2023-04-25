@@ -81,7 +81,7 @@ def create_tg_list(args: ArgList, conn: mysql.connector.MySQLConnection) -> Dict
 
 
 def output(telegram_list: Dict[str, List[str]]) -> None:
-    with open(f"{os.path.dirname(os.path.realpath(__file__))}output.txt", "w") as out_file:
+    with open(f"{os.path.dirname(os.path.realpath(__file__))}\output.txt", "w") as out_file:
         for endorser in telegram_list:
             out_file.write(f"{endorser}:\n")
             out_file.write(
