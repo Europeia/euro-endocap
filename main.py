@@ -7,7 +7,7 @@ from typing import List, Dict
 
 
 class ArgList:
-    host: str
+    server: str
     user: str
     password: str
     endocap: int
@@ -16,7 +16,7 @@ class ArgList:
 
 def pars_args() -> ArgList:
     parser = argparse.ArgumentParser()
-    parser.add_argument("-h", "--host", help="Database Host",
+    parser.add_argument("-s", "--server", help="Database Host",
                         type=str, required=True)
     parser.add_argument(
         "-u", "--user", help="Database Username", type=str, required=True)
@@ -34,9 +34,9 @@ def pars_args() -> ArgList:
     return args
 
 
-def create_db_connection(host: str, user: str, password: str) -> mysql.connector.MySQLConnection:
+def create_db_connection(server: str, user: str, password: str) -> mysql.connector.MySQLConnection:
     mydb = mysql.connector.connect(
-        host=host,
+        host=server,
         user=user,
         password=password,
         database="ns"
@@ -92,7 +92,7 @@ def output(telegram_list: Dict[str, List[str]]) -> None:
 def main():
     args = pars_args()
 
-    db_connection = create_db_connection(args.host, args.user, args.password)
+    db_connection = create_db_connection(args.server, args.user, args.password)
 
     telegram_list = create_tg_list(args, db_connection)
 
