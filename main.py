@@ -14,7 +14,7 @@ class ArgList:
     exclude: List[str]
 
 
-def pars_args() -> ArgList:
+def parse_args() -> ArgList:
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--server", help="Database Host",
                         type=str, required=True)
