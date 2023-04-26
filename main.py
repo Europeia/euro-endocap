@@ -90,7 +90,7 @@ def output(telegram_list: Dict[str, List[str]]) -> None:
 
 
 def main():
-    args = pars_args()
+    args = parse_args()
 
     db_connection = create_db_connection(args.server, args.user, args.password)
 
